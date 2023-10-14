@@ -1,0 +1,126 @@
+.mydevices{
+    height: 500px;
+    background-image: url(images\ \(2\).jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: aliceblue;
+}
+
+
+.devices{
+    display:inline-block;
+    border: 2px solid black;
+    background-image: linear-gradient(to bottom right, rgb(66, 66, 247), rgb(248, 248, 5));
+    height: 400px;
+    width: 200px;
+    margin: 55px;
+    text-align: center;
+}
+
+.devices p{
+    top: 40%;
+}
+
+.devices:hover{
+    background-image: linear-gradient(to bottom right, yellow, blue);
+}
+
+/* ##################IPHONE ############################   */
+
+#iphone{
+    border-radius: 45px 45px 45px 45px;
+    border: 8px solid black;
+
+}
+
+#iphone p{
+    font-size: xx-large;
+    position:relative;
+}
+
+#spaniphone{
+    display: inline;
+    background-color: black;
+    position: relative;
+    height: 2px;
+    width: 70px;
+    align-self: center;
+    top: 85%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+/* ##################IWatch ############################   */
+
+#iwatch{
+    border-radius: 45px 45px 45px 45px;
+    border: 8px solid black;
+    height: 200px;
+    width: 140px;
+}
+
+#iwatch p{
+    font-size: x-large;
+    position:relative;
+}
+
+/* ################## MACBOOK ############################   */
+
+#macbook{
+    /* transform: scale(0); */
+    display:inline-block;
+    border: 10px solid black;
+    /* background-image: linear-gradient(to bottom right,blue, yellow); */
+    height: 180px;
+    width: 300px;
+    margin: 40px;
+    text-align: center; 
+    border-radius: 8px 8px 8px 8px;
+}
+
+#macbook p{
+    font-size: x-large;
+    position:relative;
+}
+
+@keyframes laptop{
+    0% {
+        height: 180px; /* Initial height */
+        background-image: black;
+        color: transparent;
+      }
+      
+      100% {
+        height: 0; /* Final height, effectively shrinking from top to bottom */
+        color: transparent;
+      }
+}
+
+#macbook:hover{
+    animation: laptop 8s ease-in-out backwards;
+}
+
+/* ################## ipad ############################   */
+
+#ipad{
+      display:inline-block;
+      border: 8px solid black;
+      height: 370px;
+      width: 240px;
+      margin: 40px;
+      text-align: center; 
+      border-radius: 8px 8px 8px 8px;
+}
+
+#ipad p{
+    font-size: x-large;
+    position:relative;
+}
+
+#ipad #spaniphone{
+    height: 2px;
+    width: 250px;
+    align-self: center;
+    top: 90%;
+    border-radius: 5px 5px 5px 5px;
+    color: black;
+}
