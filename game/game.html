@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <style>
+        /* Define a CSS animation for victory on the body element */
+        @keyframes bodyVictoryAnimation {
+            0% {
+                background-image: linear-gradient(to bottom right, red, yellow, orange);
+            }
+
+            50% {
+                background-image: linear-gradient(to bottom right, rgb(255, 0, 200), rgb(119, 0, 255), rgb(68, 0, 255));
+            }
+
+            100% {
+                background-image: linear-gradient(to bottom right, red, yellow, orange);
+            }
+        }
+
+        /* Apply the animation to the body */
+        body.won {
+            animation: bodyVictoryAnimation 4s ease-in-out;
+            /* Adjust the duration and properties as needed */
+        }
+
+        #h1id {
+            display: absolute;
+            color: transparent;
+            align-self: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1 class="bg-primary">Guess the number GAME!</h1>
+    </div>
+    <div class="container">
+
+        <div class="form-group">
+            <label for="name">Enter Name: </label>
+            <input type="text" class="form-control" id="name" placeholder="Input your name" onkeypress="condition()"
+                autocomplete="off">
+
+
+        </div>
+
+        <label for="entering_age">Confirm whether you are eligible to play or not!</label><br>
+        <button type="button" class="btn btn-success text-center translate-middle" id="entering_age"
+            onclick="gamestart()">Click to Enter AGE!
+        </button>
+        <br><br>
+        <button type="button" class="btn btn-primary text-center" onclick="continuegame()">Submit</button>
+
+        <br>
+
+        <p class="jumbotron-text">
+        <h1>Winners Stack!</h1>
+        </p>
+
+        <table class="table table-stripped " id="mytable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td id="cell1">
+
+                    </td>
+                    <td id="cell2">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <h1 class="jumbotron-text" id="h1id">Victory</h1>
+    </div>
+
+    <script>
+        var winners = [];
+        var name, rep1, rep, num;
+        var age = null;
+        function gamestart() {
+            age = prompt("Enter your AGE!");
+
+            if (age >= 5) {
+                alert("you are adult enough to play the game!");
+                rep1 = true;
+            }
+            else {
+                alert("you can not play the game!");
+                rep1 = false;
+            }
+        }
+
+        function continuegame() {
+
+            realstate();
+            name = document.getElementById('name').value;
+            if (name != null && age != null) {
+                if (rep1 == true) {
+                    num = prompt("Enter any number!");
+                    if (num == 1 || num == 8 || num == 6) {
+                        alert("you guessed right and won the game!");
+                        winners.push(name);
+                        winnersstack();
+                        transition();
+                    }
+                    else {
+                        alert("Better luck next time!");
+                    }
+                }
+                age = null;
+            }
+            else if (name == null) {
+                alert("Enter name first!")
+            }
+            else {
+                alert("Enter age first!")
+            }
+        }
+
+        function condition() {
+            if (rep1 == false) {
+                alert("You are not allowed to play!")
+            }
+        }
+
+        function winnersstack() {
+            var table = document.getElementById('mytable');
+            var newRow = table.insertRow(-1); // Insert a new row at the end of the table
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+
+            cell1.innerHTML = winners[winners.length - 1]; // Get the latest winner's name
+            cell2.innerHTML = age;
+            document.getElementById('name').value = '';
+        }
+
+        function transition() {
+            document.body.classList.add('won');
+            var victoryMessage = document.getElementById('h1id');
+            victoryMessage.style.color = 'black';
+        }
+
+        function realstate() {
+            var victoryMessage = document.getElementById('h1id');
+            victoryMessage.style.color = 'transparent';
+            document.body.classList.remove('won');
+        }
+    </script>
+</body>
+
+</html>
